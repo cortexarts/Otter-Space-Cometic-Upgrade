@@ -178,6 +178,84 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &1311982826
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000460446817860, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: cometPrefab
+      value: 
+      objectReference: {fileID: 1845412088791000, guid: 779a704586733b942a9f76b176642d87,
+        type: 2}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: minCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: scaleExtrema.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: scaleExtrema.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: offsetExtrema.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: amountExtrema.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114696924335232286, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: amountExtrema.y
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1321188170
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,7 +367,7 @@ GameObject:
   - component: {fileID: 1470993908}
   - component: {fileID: 1470993913}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: MainCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,6 +466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1834465928}
   - component: {fileID: 1834465929}
+  - component: {fileID: 1834465930}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -450,3 +529,18 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!70 &1834465930
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1834465927}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 5.29, y: 8.93}
+  m_Direction: 0
