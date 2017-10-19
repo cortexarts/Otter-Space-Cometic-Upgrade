@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000460446817860}
-  - component: {fileID: 114696924335232286}
+  - component: {fileID: 114171813512914510}
   m_Layer: 0
   m_Name: CometSpawner
   m_TagString: Untagged
@@ -40,7 +40,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114696924335232286
+--- !u!114 &114171813512914510
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -48,9 +48,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1610760241425072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eff134404f5ea4344a764985816083ea, type: 3}
+  m_Script: {fileID: 11500000, guid: e7b2322a4cf341b45a70b98eb0dd2b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCount: 0
-  maxCount: 5
-  cometPrefab: {fileID: 0}
+  amountExtrema: {x: 5, y: 5}
+  offsetExtrema: {x: -10, y: 10}
+  scaleExtrema: {x: 1, y: 1}
+  cometPrefab: {fileID: 1845412088791000, guid: 366789da7a451c84eb5667d1848046c5,
+    type: 2}

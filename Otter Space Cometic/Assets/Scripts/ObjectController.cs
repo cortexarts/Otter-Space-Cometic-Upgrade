@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RocketController : MonoBehaviour
+public class ObjectController : MonoBehaviour
 {
     //Maximum speed
     [SerializeField]
@@ -14,6 +14,7 @@ public class RocketController : MonoBehaviour
     //Current speed
     [SerializeField]
     private float m_Velocity = 0f;
+    private float m_LastVelocity = 0f;
     //Value by which speed is increased
     [SerializeField]
     private float m_Acceleration = 4f;
@@ -26,32 +27,72 @@ public class RocketController : MonoBehaviour
     //Current direction the craft is moving towards
     [SerializeField]
     private Vector3 m_MoveDirection;
+    [SerializeField]
+    private bool m_PlayerControlled = false;
 
     [SerializeField]
-    private Rigidbody2D m_Rigidbody2D;
+    private float m_SpeedTransferInCollision = 1;
     
+    private Rigidbody2D m_Rigidbody2D;
+
+
+    private void Start()
+    {
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
     void FixedUpdate()
     {
-        float inputHorizontal = Input.GetAxis("Horizontal");
-        float inputVertical = Input.GetAxis("Vertical");
-
-        if (inputVertical != 0)
+        if (m_PlayerControlled)
         {
-            ChangeDirectionAndVelocity(transform.up, m_Acceleration, inputVertical);
-        }
-        if (inputHorizontal != 0)
-        {
-            //Rotate the craft according to button press
-            transform.Rotate(transform.forward, -inputHorizontal * m_RotationSpeed * Time.fixedDeltaTime);
+            float inputHorizontal = Input.GetAxis("Horizontal");
+            float inputVertical = Input.GetAxis("Vertical");
 
+            if (inputVertical != 0)
+            {
+                ChangeDirectionAndVelocity(transform.up, m_Acceleration, inputVertical);
+            }
+            if (inputHorizontal != 0)
+            {
+                //Rotate the craft according to button press
+                transform.Rotate(transform.forward, -inputHorizontal * m_RotationSpeed * Time.fixedDeltaTime);
+
+            }
         }
-        
         //Move the craft
         m_Rigidbody2D.velocity = m_MoveDirection * m_Velocity * Time.fixedDeltaTime;
+        m_LastVelocity = m_Velocity;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        ObjectController objController = collider.gameObject.GetComponent<ObjectController>();
+        float speedDifference = 0;
+        if (objController.m_LastVelocity < .1)
+        {
+            print(this.name + " obj < .1");
+            speedDifference = m_Velocity;
+        }
+        else if (m_LastVelocity < .1)
+        {
+            print(this.name + " < .1");
+            speedDifference = objController.m_Velocity;
+        }
+        else
+        {
+            print(this.name + " else");
+            speedDifference = ((m_MoveDirection * m_Velocity) - (objController.m_MoveDirection * m_Velocity)).magnitude;
+        }
+        Vector2 pushDir = transform.position - collider.transform.position;
+        pushDir.Normalize();
+        float pushAmount = 1;
+        if (m_Velocity > .1)
+            pushAmount = (Mathf.Abs(Vector3.Cross(m_MoveDirection, pushDir).z) -1) *-1;
+        else
+            m_MoveDirection = pushDir;
+        print("n:" + this.name + " d:" + speedDifference + " p:" + pushAmount + " s:" + m_SpeedTransferInCollision);
+        Debug.DrawRay(transform.position, pushDir, Color.red, speedDifference * pushAmount * m_SpeedTransferInCollision);
+        ChangeDirectionAndVelocity(pushDir, speedDifference * pushAmount * m_SpeedTransferInCollision);
     }
     private void OnTriggerExit2D(Collider2D collider)
     {
