@@ -238,6 +238,7 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 114171813512914510, guid: 7a0d114a2619c944eae9578e3ed29c1c,
         type: 2}
       propertyPath: scaleExtrema.x
@@ -248,6 +249,8 @@ Prefab:
       propertyPath: scaleExtrema.y
       value: 4
       objectReference: {fileID: 0}
+=======
+>>>>>>> 5ddc1f0d032a12f8f59c45b911784fc815f008fa
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a0d114a2619c944eae9578e3ed29c1c, type: 2}
   m_IsPrefabParent: 0

@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1610760241425072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4.96, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,8 +51,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b2322a4cf341b45a70b98eb0dd2b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   amountExtrema: {x: 5, y: 5}
   offsetExtrema: {x: -10, y: 10}
   scaleExtrema: {x: 1, y: 1}
   cometPrefab: {fileID: 1845412088791000, guid: 366789da7a451c84eb5667d1848046c5,
     type: 2}
+=======
+  amountExtrema: {x: 2, y: 5}
+  offsetExtrema: {x: -3, y: 3}
+  scaleExtrema: {x: 4, y: 10}
+  cometPrefab: {fileID: 1845412088791000, guid: 779a704586733b942a9f76b176642d87,
+    type: 2}
+  comets: []
+>>>>>>> 5ddc1f0d032a12f8f59c45b911784fc815f008fa
