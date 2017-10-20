@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 61515327881298828}
   m_Layer: 0
   m_Name: RocketPrefab
-  m_TagString: Untagged
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,8 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 0
-  maxLifeTime: 100
+  maxLifeTime: 5
   m_Velocity: 150
+  camShakeAmt: 0.05
+  camShakeLength: 0.1
 --- !u!212 &212003204198036372
 SpriteRenderer:
   m_ObjectHideFlags: 1

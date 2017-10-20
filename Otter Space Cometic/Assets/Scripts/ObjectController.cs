@@ -137,6 +137,7 @@ public class ObjectController : MonoBehaviour
         m_Velocity += acceleration * accFactor;
         m_Velocity = Mathf.Clamp(m_Velocity, m_MinVelocity, m_MaxVelocity);
     }
+
     public float CurrentFuelAmount()
     {
         return m_FuelAmount;
