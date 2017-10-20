@@ -35,24 +35,24 @@ public class CometValues : MonoBehaviour
         linearMultiplication = value[1];
         squareMultiplication = value[2];
         offset = -((answer * answer * squareMultiplication) + (answer * linearMultiplication));
-        offsetLeft = offset - value[3];
+        offsetLeft = offset + value[3];
         offsetRight = offset - offsetLeft;
     }
 
-    string cleanupText(int number, string stringToAdd)
+    string cleanupText(int number, string stringToAdd, string positiveString, string negativeString)
     {
         stringToReturn = "";
         if (number != 0)
         {
-            if (number != 1) stringToReturn += number.ToString();
-            if (stringToAdd != "")
+            if (number > 0) stringToReturn += positiveString;
+            else
             {
-                stringToReturn += stringToAdd;
-                if (number > 0)
-                {
-                    stringToReturn += "+ ";
-                }
+                number *= -1;
+                stringToReturn += negativeString;
             }
+            if (number != 1) stringToReturn += number.ToString();
+            stringToReturn += stringToAdd;
+             
         }
         return stringToReturn;
     }
@@ -61,47 +61,13 @@ public class CometValues : MonoBehaviour
     void Update()
     {
         formula.text = "";
-        formula.text += cleanupText(squareMultiplication, "x^2 ");
-        formula.text += cleanupText(linearMultiplication, " x ");
-        formula.text += cleanupText(offsetLeft, "");
+        formula.text += cleanupText(squareMultiplication, "x" + '\u00B2', "", "-");
+        if(squareMultiplication != 0) formula.text += cleanupText(linearMultiplication, " x ", " + ", " - ");
+        else formula.text += cleanupText(linearMultiplication, "x ", "", "-");
+        formula.text += cleanupText(offsetLeft, "", "+ ", " - ");
         formula.text += " = ";
 
-        if (offsetRight != 0) formula.text += cleanupText(offsetRight, "");
+        if (offsetRight != 0) formula.text += cleanupText(offsetRight, "", "", "-");
         else formula.text += "0";
     }
 }
-
-//public class CometValues : MonoBehaviour
-//{
-//    private List<int> value = new List<int>();
-//    private int offset;
-
-//    public int answer;
-//    public int linearMultiplication;
-//    public int squareMultiplication;
-//    public int offsetLeft;
-//    public int offsetRight;
-//    public Text formula;
-
-
-//	// Use this for initialization
-//	void Start () {
-
-//	}
-
-//    void SetAnswer(List<int> value)
-//    {
-//        answer = value[0];
-//        linearMultiplication = value[1];
-//        squareMultiplication = value[2];
-//        offset = (answer * answer * squareMultiplication) + (answer * linearMultiplication);
-//        offsetLeft = offset + value[3];
-//        offsetRight = offset - offsetLeft;
-//    }
-
-//	// Update is called once per frame
-//	void Update () {
-//        formula.text = squareMultiplication.ToString() + "x^2 + " + linearMultiplication.ToString() + " x + " + offsetLeft.ToString() + " = " + offsetRight.ToString();
-
-//    }
-//}
