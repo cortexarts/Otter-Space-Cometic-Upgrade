@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 683433183}
   - component: {fileID: 683433185}
   - component: {fileID: 683433186}
+  - component: {fileID: 683433187}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -199,6 +200,21 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5.29, y: 8.93}
   m_Direction: 0
+--- !u!114 &683433187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 683433182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896a22eb3f6dc2f4a9d87663207eb5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketPrefab: {fileID: 1916220342442694, guid: c5a29b2659848c844bc988b26c6c7004,
+    type: 2}
+  camShakeAmt: 0.05
+  camShakeLength: 0.1
 --- !u!1001 &1058494471
 Prefab:
   m_ObjectHideFlags: 0
