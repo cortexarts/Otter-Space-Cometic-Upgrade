@@ -303,7 +303,7 @@ Prefab:
     - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
         type: 2}
       propertyPath: valueAnswerMax
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
         type: 2}
@@ -318,7 +318,37 @@ Prefab:
     - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
         type: 2}
       propertyPath: valueAnswerMin
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: valueSquareMultiplicationMax
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: valueLinearMultiplicationMax
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: valueOffsetVariationMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: valueSquareMultiplicationMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: valueOffsetVariationMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: valueLinearMultiplicationMin
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
