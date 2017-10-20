@@ -66,39 +66,46 @@ public class ObjectController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        ObjectController objController = collider.gameObject.GetComponent<ObjectController>();
-        float speedDifference = 0;
-        if (objController.m_LastVelocity < .1)
+        if (collider.gameObject.GetComponent<ObjectController>())
         {
-            print(this.name + " obj < .1");
-            speedDifference = m_Velocity;
+            ObjectController objController = collider.gameObject.GetComponent<ObjectController>();
+            float speedDifference = 0;
+            if (objController.m_LastVelocity < .1)
+            {
+                print(this.name + " obj < .1");
+                speedDifference = m_Velocity;
+            }
+            else if (m_LastVelocity < .1)
+            {
+                print(this.name + " < .1");
+                speedDifference = objController.m_Velocity;
+            }
+            else
+            {
+                print(this.name + " else");
+                speedDifference = ((m_MoveDirection * m_Velocity) - (objController.m_MoveDirection * m_Velocity)).magnitude;
+            }
+            Vector2 pushDir = transform.position - collider.transform.position;
+            pushDir.Normalize();
+            float pushAmount = 1;
+            if (m_Velocity > .1)
+                pushAmount = (Mathf.Abs(Vector3.Cross(m_MoveDirection, pushDir).z) - 1) * -1;
+            else
+                m_MoveDirection = pushDir;
+            print("n:" + this.name + " d:" + speedDifference + " p:" + pushAmount + " s:" + m_SpeedTransferInCollision);
+            Debug.DrawRay(transform.position, pushDir, Color.red, speedDifference * pushAmount * m_SpeedTransferInCollision);
+            ChangeDirectionAndVelocity(pushDir, speedDifference * pushAmount * m_SpeedTransferInCollision);
         }
-        else if (m_LastVelocity < .1)
-        {
-            print(this.name + " < .1");
-            speedDifference = objController.m_Velocity;
-        }
-        else
-        {
-            print(this.name + " else");
-            speedDifference = ((m_MoveDirection * m_Velocity) - (objController.m_MoveDirection * m_Velocity)).magnitude;
-        }
-        Vector2 pushDir = transform.position - collider.transform.position;
-        pushDir.Normalize();
-        float pushAmount = 1;
-        if (m_Velocity > .1)
-            pushAmount = (Mathf.Abs(Vector3.Cross(m_MoveDirection, pushDir).z) -1) *-1;
-        else
-            m_MoveDirection = pushDir;
-        print("n:" + this.name + " d:" + speedDifference + " p:" + pushAmount + " s:" + m_SpeedTransferInCollision);
-        Debug.DrawRay(transform.position, pushDir, Color.red, speedDifference * pushAmount * m_SpeedTransferInCollision);
-        ChangeDirectionAndVelocity(pushDir, speedDifference * pushAmount * m_SpeedTransferInCollision);
     }
+
     private void OnTriggerExit2D(Collider2D collider)
     {
+
     }
+
     private void OnTriggerStay2D(Collider2D collider)
     {
+
     }
 
     //Takes an degree angle difference between two directions and returns a value between 1 and -1

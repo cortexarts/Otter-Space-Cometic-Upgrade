@@ -31,4 +31,17 @@ public class RocketBehaviour : MonoBehaviour
     {
         rb.AddForce(transform.up * movementSpeed * Time.deltaTime, ForceMode2D.Impulse);
     }
+
+    private void OnDestroy()
+    {
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.tag == "Comet")
+        {
+            DestroyObject(this.gameObject);
+        }
+    }
 }
