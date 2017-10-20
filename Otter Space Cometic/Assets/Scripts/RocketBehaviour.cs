@@ -6,14 +6,16 @@ public class RocketBehaviour : MonoBehaviour
 {
     public float lifeTime = 0;
     public float maxLifeTime = 5.0f;
-    public float movementSpeed = 2.0f;
 
-    public Rigidbody2D rb;
+    [SerializeField]
+    public float m_Velocity = 150.0f;
+
+    private Rigidbody2D m_Rigidbody2D;
 
     // Use this for initialization
     void Start ()
     {
-        rb = GetComponent<Rigidbody2D>();
+        m_Rigidbody2D = GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
@@ -29,12 +31,12 @@ public class RocketBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(transform.up * movementSpeed * Time.deltaTime, ForceMode2D.Impulse);
+        m_Rigidbody2D.velocity = transform.up * m_Velocity * Time.fixedDeltaTime;
     }
 
     private void OnDestroy()
     {
-        
+        Debug.Log("Still need to add animations!");
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
