@@ -25,7 +25,7 @@ public class RocketBehaviour : MonoBehaviour
         camShake = Camera.main.GetComponent<CameraShake>();
         if (camShake == null)
         {
-            Debug.LogError("No CameraShake script found on GM object.");
+            Debug.LogError("No CameraShake script found.");
         }
     }
 

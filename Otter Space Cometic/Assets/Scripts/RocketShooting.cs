@@ -23,6 +23,6 @@ public class RocketShooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject newRocket = Instantiate(rocketPrefab, this.transform.position, this.transform.rotation) as GameObject;
+       Instantiate(rocketPrefab, this.transform.position, this.transform.rotation);
     }
 }
