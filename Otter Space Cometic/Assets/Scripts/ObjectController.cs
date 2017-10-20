@@ -66,39 +66,52 @@ public class ObjectController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        ObjectController objController = collider.gameObject.GetComponent<ObjectController>();
-        float speedDifference = 0;
-        if (objController.m_LastVelocity < .1)
+        if (collider.gameObject.GetComponent<ObjectController>())
         {
-            print(this.name + " obj < .1");
-            speedDifference = m_Velocity;
+            ObjectController objController = collider.gameObject.GetComponent<ObjectController>();
+            float speedDifference = 0;
+            if (objController.m_LastVelocity < .1)
+            {
+                print(this.name + " obj < .1");
+                speedDifference = m_Velocity;
+            }
+            else if (m_LastVelocity < .1)
+            {
+                print(this.name + " < .1");
+                speedDifference = objController.m_Velocity;
+            }
+            else
+            {
+                print(this.name + " else");
+                speedDifference = ((m_MoveDirection * m_Velocity) - (objController.m_MoveDirection * m_Velocity)).magnitude;
+            }
+            Vector2 pushDir = transform.position - collider.transform.position;
+            pushDir.Normalize();
+            float pushAmount = 1;
+            if (m_Velocity > .1)
+                pushAmount = (Mathf.Abs(Vector3.Cross(m_MoveDirection, pushDir).z) - 1) * -1;
+            else
+                m_MoveDirection = pushDir;
+            print("n:" + this.name + " d:" + speedDifference + " p:" + pushAmount + " s:" + m_SpeedTransferInCollision);
+            Debug.DrawRay(transform.position, pushDir, Color.red, speedDifference * pushAmount * m_SpeedTransferInCollision);
+            ChangeDirectionAndVelocity(pushDir, speedDifference * pushAmount * m_SpeedTransferInCollision);
         }
-        else if (m_LastVelocity < .1)
+
+        // Check if a rocket is colliding with the current object (yes this is confusing, because the player aka Rocket object shoudln't be destroyed)
+        if (collider.tag == "Rocket" && this.gameObject.name != "Rocket")
         {
-            print(this.name + " < .1");
-            speedDifference = objController.m_Velocity;
+            Destroy(this.gameObject);
         }
-        else
-        {
-            print(this.name + " else");
-            speedDifference = ((m_MoveDirection * m_Velocity) - (objController.m_MoveDirection * m_Velocity)).magnitude;
-        }
-        Vector2 pushDir = transform.position - collider.transform.position;
-        pushDir.Normalize();
-        float pushAmount = 1;
-        if (m_Velocity > .1)
-            pushAmount = (Mathf.Abs(Vector3.Cross(m_MoveDirection, pushDir).z) -1) *-1;
-        else
-            m_MoveDirection = pushDir;
-        print("n:" + this.name + " d:" + speedDifference + " p:" + pushAmount + " s:" + m_SpeedTransferInCollision);
-        Debug.DrawRay(transform.position, pushDir, Color.red, speedDifference * pushAmount * m_SpeedTransferInCollision);
-        ChangeDirectionAndVelocity(pushDir, speedDifference * pushAmount * m_SpeedTransferInCollision);
     }
+
     private void OnTriggerExit2D(Collider2D collider)
     {
+
     }
+
     private void OnTriggerStay2D(Collider2D collider)
     {
+
     }
 
     //Takes an degree angle difference between two directions and returns a value between 1 and -1
@@ -124,8 +137,14 @@ public class ObjectController : MonoBehaviour
         m_Velocity += acceleration * accFactor;
         m_Velocity = Mathf.Clamp(m_Velocity, m_MinVelocity, m_MaxVelocity);
     }
+
     public float CurrentFuelAmount()
     {
         return m_FuelAmount;
+    }
+
+    private void OnDestroy()
+    {
+        Debug.Log("Still need to add animations!");
     }
 }

@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 683433183}
   - component: {fileID: 683433185}
   - component: {fileID: 683433186}
+  - component: {fileID: 683433187}
   m_Layer: 0
   m_Name: Rocket
   m_TagString: Untagged
@@ -261,6 +262,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 5.29, y: 8.93}
   m_Direction: 0
+--- !u!114 &683433187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 683433182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896a22eb3f6dc2f4a9d87663207eb5df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketPrefab: {fileID: 1916220342442694, guid: c5a29b2659848c844bc988b26c6c7004,
+    type: 2}
 --- !u!1001 &1058494471
 Prefab:
   m_ObjectHideFlags: 0
@@ -465,6 +479,7 @@ GameObject:
   - component: {fileID: 1470993909}
   - component: {fileID: 1470993908}
   - component: {fileID: 1470993913}
+  - component: {fileID: 1470993914}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -555,6 +570,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FollowTarget: {fileID: 683433184}
   m_Offset: {x: 0, y: 0, z: -10}
+--- !u!114 &1470993914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470993907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ebe3505b8556744e84941f46662bebf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
 --- !u!1 &1834465927
 GameObject:
   m_ObjectHideFlags: 0
