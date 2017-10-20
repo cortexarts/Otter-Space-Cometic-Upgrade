@@ -22,6 +22,7 @@ public class CometSpawner : MonoBehaviour
             GameObject newComet = Instantiate(cometPrefab, this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0), Quaternion.identity) as GameObject;
             newComet.transform.localScale = new Vector3(Random.Range(scaleExtrema.x, scaleExtrema.y), Random.Range(scaleExtrema.x, scaleExtrema.y), 1);
             comets.Add(newComet);
+            newComet.SendMessage("SetAnswer", 3);
         }
 	}
 	
