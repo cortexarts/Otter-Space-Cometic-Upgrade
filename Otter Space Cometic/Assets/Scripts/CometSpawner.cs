@@ -32,6 +32,16 @@ public class CometSpawner : MonoBehaviour
         valueOffsetVariationMax = value8;
     }
 
+    bool IsColliding(Vector3 a_FirstVec, Vector3 a_SecondVec, float a_Radius)
+    {
+        // SIMD optimized AABB-AABB test
+        // Optimized by removing conditional branches
+        bool x = Mathf.Abs(a_FirstVec.x - a_SecondVec.x) <= (a_Radius + a_Radius);
+        bool y = Mathf.Abs(a_FirstVec.y - a_SecondVec.y) <= (a_Radius + a_Radius);
+
+        return x && y;
+    }
+
     // Use this for initialization
     void Start ()
     {
@@ -46,11 +56,7 @@ public class CometSpawner : MonoBehaviour
         {
             // Generate random position that isn't overlapping with the previous position
             newPosition = this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
-            if (newPosition.x - 2.0f > lastPosition.x && newPosition.y - 2.0f > lastPosition.y)
-            {
-                // Positions should be atleast 2.0f units apart
-            }
-            else
+            if (IsColliding(newPosition, lastPosition, 2.0f))
             {
                 // Regenerate positition
                 newPosition = this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
