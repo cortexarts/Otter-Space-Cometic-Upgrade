@@ -71,14 +71,16 @@ public class CometSpawner : MonoBehaviour
 
             switch (difficulty)
             {
-                case 0: SetRanges(0, 10, 0, 0, 1, 1, 0, 0); break;
-                case 1: SetRanges(0, 10, 0, 0, 1, 5, 0, 0); break;
-                case 2: SetRanges(0, 10, 0, 0, 1, 5, 0, 10); break;
-                case 3: SetRanges(0, 10, 0, 0, 1, 10, 0, 30); break;
-                case 4: SetRanges(0, 10, 1, 1, 0, 0, 0, 0); break;
-                case 5: SetRanges(0, 10, 1, 1, 1, 5, 0, 0); break;
-                case 6: SetRanges(0, 10, 0, 1, 1, 10, 0, 30); break;
-                case 7: SetRanges(0, 10, 0, 2, 1, 10, 0, 30); break;
+                case 0: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 1, 0, 0); break;
+                case 1: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 1, 0, 10); break;
+                case 2: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 5, 0, 0); break;
+                case 3: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 5, 0, 10); break;
+                case 4: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 10, 0, 30); break;
+                case 5: SetRanges(valueAnswerMin, valueAnswerMax, 1, 1, 0, 0, 0, 0); break;
+                case 6: SetRanges(valueAnswerMin, valueAnswerMax, 1, 1, 0, 0, 0, 10); break;
+                case 7: SetRanges(valueAnswerMin, valueAnswerMax, 1, 1, 1, 5, 0, 0); break;
+                case 8: SetRanges(valueAnswerMin, valueAnswerMax, 0, 1, 1, 10, 0, 30); break;
+                case 9: SetRanges(valueAnswerMin, valueAnswerMax, 0, 2, 1, 10, 0, 30); break;
             }
 
             List<int> value = new List<int> { Random.Range(valueAnswerMin, valueAnswerMax), Random.Range(valueLinearMultiplicationMin, valueLinearMultiplicationMax), Random.Range(valueSquareMultiplicationMin, valueSquareMultiplicationMax), Random.Range(valueOffsetVariationMin, valueOffsetVariationMax) };

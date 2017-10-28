@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.IO;
 
-public class CometValues : MonoBehaviour
+public class CometValuesToText : MonoBehaviour
 {
     private List<int> value = new List<int>();
     private int offset;
     private string stringToReturn;
     private string stringToAdd;
 
-    public int answer;
+    private int answer;
     public int linearMultiplication;
     public int squareMultiplication;
     public int offsetLeft;
     public int offsetRight;
     public Text formula;
-
 
     string cleanupText(int number, string stringToAdd, string positiveString, string negativeString)
     {
@@ -54,5 +54,18 @@ public class CometValues : MonoBehaviour
 
         if (offsetRight != 0) formula.text += cleanupText(offsetRight, "", "", "-");
         else formula.text += "0";
+    }
+
+    public class HandleTextFile
+    {
+        static void WriteString()
+        {
+            string path = "Assets/test.txt";
+
+            //Write some text to the test.txt file
+            StreamWriter writer = new StreamWriter(path, true);
+            writer.WriteLine("test");
+            writer.Close();
+        }
     }
 }
