@@ -7,8 +7,11 @@ public class CometSpawner : MonoBehaviour
     public Vector2 amountExtrema;
     public Vector2 offsetExtrema;
     public Vector2 scaleExtrema;
+    [SerializeField]
+    public float offset = 1.0f;
     public GameObject cometPrefab;
     public List<GameObject> comets;
+    private List<Vector3> positions;
 
     public int difficulty;
     public int valueAnswerMin = 1;
@@ -32,42 +35,47 @@ public class CometSpawner : MonoBehaviour
         valueOffsetVariationMax = value8;
     }
 
-    bool IsColliding(Vector3 a_FirstVec, Vector3 a_SecondVec, float a_Radius)
+    bool IsColliding(Vector3 a_FirstVec, Vector3 a_SecondVec, float a_Padding)
     {
         // SIMD optimized AABB-AABB test
         // Optimized by removing conditional branches
-        bool x = Mathf.Abs(a_FirstVec.x - a_SecondVec.x) <= (a_Radius + a_Radius);
-        bool y = Mathf.Abs(a_FirstVec.y - a_SecondVec.y) <= (a_Radius + a_Radius);
+        bool x = Mathf.Abs(a_FirstVec.x - a_SecondVec.x) <= (a_Padding + a_Padding);
+        bool y = Mathf.Abs(a_FirstVec.y - a_SecondVec.y) <= (a_Padding + a_Padding);
 
         return x && y;
     }
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         int cometsCount = (int)Random.Range(amountExtrema.x, amountExtrema.y);
-
         comets = new List<GameObject>();
+        positions = new List<Vector3>();
 
-        Vector3 newPosition;
-        Vector3 lastPosition = new Vector3(0,0,0);
-
-        for (int i = 0; i < cometsCount; i++)
+        // Generate positions
+        while (positions.Count < cometsCount * 2.0f)
         {
-            // Generate random position that isn't overlapping with the previous position
-            newPosition = this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
-            if (IsColliding(newPosition, lastPosition, 2.0f))
-            {
-                // Regenerate positition
-                newPosition = this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
-            }
+            Vector3 newPosition = this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
+            positions.Add(newPosition);
+        }
 
-            GameObject newComet = Instantiate(cometPrefab, newPosition, Quaternion.identity) as GameObject;
+        for (int outer = 0; outer < positions.Count - 1; outer++)
+        {
+            for (int inner = outer + 1; inner < positions.Count; inner++)
+            {
+                if (IsColliding(positions[inner], positions[outer], offset))
+                {
+                    positions.RemoveAt(inner);
+                    inner--;
+                }
+            }
+        }
+
+        for (int i = 0; i < positions.Count && i < cometsCount; i++)
+        {
+            GameObject newComet = Instantiate(cometPrefab, positions[i], Quaternion.identity) as GameObject;
             newComet.transform.localScale = new Vector3(Random.Range(scaleExtrema.x, scaleExtrema.y), Random.Range(scaleExtrema.x, scaleExtrema.y), 1);
             comets.Add(newComet);
-
-            // Store current position
-            lastPosition = newPosition;
 
             switch (difficulty)
             {
@@ -84,7 +92,7 @@ public class CometSpawner : MonoBehaviour
             List<int> value = new List<int> { Random.Range(valueAnswerMin, valueAnswerMax), Random.Range(valueLinearMultiplicationMin, valueLinearMultiplicationMax), Random.Range(valueSquareMultiplicationMin, valueSquareMultiplicationMax), Random.Range(valueOffsetVariationMin, valueOffsetVariationMax) };
             newComet.SendMessage("SetAnswer", value);
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()

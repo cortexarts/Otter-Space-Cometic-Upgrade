@@ -17,7 +17,6 @@ public class CometValues : MonoBehaviour
     public int offsetRight;
     public Text formula;
 
-
     // Use this for initialization
     void Start()
     {
