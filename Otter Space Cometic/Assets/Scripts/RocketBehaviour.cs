@@ -43,6 +43,7 @@ public class RocketBehaviour : MonoBehaviour
     private void FixedUpdate()
     {
         m_Rigidbody2D.velocity = transform.up * m_Velocity * Time.fixedDeltaTime;
+        m_Velocity += lifeTime * Time.fixedDeltaTime;
     }
 
     private void OnDestroy()

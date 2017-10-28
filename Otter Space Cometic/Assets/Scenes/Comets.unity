@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 683433187}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Rocket
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,6 +369,21 @@ Prefab:
       propertyPath: difficulty
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: amountExtrema.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: amountExtrema.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114647465945805480, guid: b6c3e5708d0fef14581377aa260af9df,
+        type: 2}
+      propertyPath: offset
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
   m_IsPrefabParent: 0
@@ -458,7 +473,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7d45182c09bed2e4fb6eed93bacc9409, type: 2}
+  - {fileID: 2100000, guid: a75430947a2788a4ea7d51b7cd1ec747, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
