@@ -30,8 +30,8 @@ public class CometValues : MonoBehaviour
         linearMultiplication = value[1];
         squareMultiplication = value[2];
         offset = -((answer * answer * squareMultiplication) + (answer * linearMultiplication));
-        offsetLeft = offset + value[3];
-        offsetRight = offset - offsetLeft;
+        offsetLeft = offset - value[3];
+        offsetRight = value[3];
     }
 
     string cleanupText(int number, string stringToAdd, string positiveString, string negativeString)
