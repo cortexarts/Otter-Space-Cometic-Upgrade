@@ -34,11 +34,7 @@ public class CometValues : MonoBehaviour
         offsetRight = offset - offsetLeft;
     }
 
-<<<<<<< HEAD
     string cleanupText(int number, string stringToAdd, string positiveString, string negativeString)
-=======
-    string CleanupText(int number, string stringToAdd)
->>>>>>> 83fffd559eeb1943f81e9baac55ede9aa1f6bd8c
     {
         stringToReturn = "";
         if (number != 0)
@@ -60,25 +56,13 @@ public class CometValues : MonoBehaviour
     void Update()
     {
         formula.text = "";
-<<<<<<< HEAD
         formula.text += cleanupText(squareMultiplication, "x" + '\u00B2', "", "-");
-        if(squareMultiplication != 0) formula.text += cleanupText(linearMultiplication, " x ", " + ", " - ");
+        if(squareMultiplication != 0) formula.text += cleanupText(linearMultiplication, "x ", " + ", " - ");
         else formula.text += cleanupText(linearMultiplication, "x ", "", "-");
-        formula.text += cleanupText(offsetLeft, "", "+ ", " - ");
+        formula.text += cleanupText(offsetLeft, "", "+ ", "- ");
         formula.text += " = ";
 
         if (offsetRight != 0) formula.text += cleanupText(offsetRight, "", "", "-");
         else formula.text += "0";
     }
 }
-=======
-        formula.text += CleanupText(squareMultiplication, "x^2 ");
-        formula.text += CleanupText(linearMultiplication, " x ");
-        formula.text += CleanupText(offsetLeft, "");
-        formula.text += " = ";
-
-        if (offsetRight != 0) formula.text += CleanupText(offsetRight, "");
-        else formula.text += "0";
-    }
-}
->>>>>>> 83fffd559eeb1943f81e9baac55ede9aa1f6bd8c
