@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine.UI;
-using UnityEngine;
-
 public class CometValues : MonoBehaviour
 {
     private List<int> value = new List<int>();
@@ -39,7 +34,11 @@ public class CometValues : MonoBehaviour
         offsetRight = offset - offsetLeft;
     }
 
+<<<<<<< HEAD
     string cleanupText(int number, string stringToAdd, string positiveString, string negativeString)
+=======
+    string CleanupText(int number, string stringToAdd)
+>>>>>>> 83fffd559eeb1943f81e9baac55ede9aa1f6bd8c
     {
         stringToReturn = "";
         if (number != 0)
@@ -61,6 +60,7 @@ public class CometValues : MonoBehaviour
     void Update()
     {
         formula.text = "";
+<<<<<<< HEAD
         formula.text += cleanupText(squareMultiplication, "x" + '\u00B2', "", "-");
         if(squareMultiplication != 0) formula.text += cleanupText(linearMultiplication, " x ", " + ", " - ");
         else formula.text += cleanupText(linearMultiplication, "x ", "", "-");
@@ -71,3 +71,14 @@ public class CometValues : MonoBehaviour
         else formula.text += "0";
     }
 }
+=======
+        formula.text += CleanupText(squareMultiplication, "x^2 ");
+        formula.text += CleanupText(linearMultiplication, " x ");
+        formula.text += CleanupText(offsetLeft, "");
+        formula.text += " = ";
+
+        if (offsetRight != 0) formula.text += CleanupText(offsetRight, "");
+        else formula.text += "0";
+    }
+}
+>>>>>>> 83fffd559eeb1943f81e9baac55ede9aa1f6bd8c
