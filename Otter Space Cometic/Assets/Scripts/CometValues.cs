@@ -17,7 +17,6 @@ public class CometValues : MonoBehaviour
     public int offsetRight;
     public Text formula;
 
-
     string cleanupText(int number, string stringToAdd, string positiveString, string negativeString)
     {
         stringToReturn = "";
