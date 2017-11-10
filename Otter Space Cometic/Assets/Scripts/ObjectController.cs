@@ -96,12 +96,6 @@ public class ObjectController : MonoBehaviour
             Debug.DrawRay(transform.position, pushDir, Color.red, speedDifference * pushAmount * m_SpeedTransferInCollision);
             ChangeDirectionAndVelocity(pushDir, speedDifference * pushAmount * m_SpeedTransferInCollision);
         }
-
-        // Check if a rocket is colliding with the current object (yes this is confusing, because the player aka Rocket object shoudln't be destroyed)
-        if (collider.tag == "Rocket" && this.gameObject.name != "Rocket")
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
