@@ -63,10 +63,10 @@ public class RocketBehaviour : MonoBehaviour
         if (collider.tag == "Comet")
         {
             //Shake the camera
-            camShake.Shake(camShakeAmt, camShakeLength);
             if (collider.GetComponent<CometValues>().answer == answer)
             {
                 DestroyObject(collider.gameObject);
+                camShake.Shake(camShakeAmt, camShakeLength);
             }
             DestroyObject(this.gameObject);
         }
