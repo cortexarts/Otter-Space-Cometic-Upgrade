@@ -13,6 +13,8 @@ public class CometSpawner : MonoBehaviour
     public List<GameObject> comets;
     private List<Vector3> positions;
 
+
+    public int TextSize;
     public int difficulty;
     public int valueAnswerMin = 1;
     public int valueAnswerMax = 10;
@@ -91,7 +93,7 @@ public class CometSpawner : MonoBehaviour
                 case 9: SetRanges(valueAnswerMin, valueAnswerMax, 0, 2, 1, 10, 0, 30); break;
             }
 
-            List<int> value = new List<int> { Random.Range(valueAnswerMin, valueAnswerMax), Random.Range(valueLinearMultiplicationMin, valueLinearMultiplicationMax), Random.Range(valueSquareMultiplicationMin, valueSquareMultiplicationMax), Random.Range(valueOffsetVariationMin, valueOffsetVariationMax) };
+            List<int> value = new List<int> { Random.Range(valueAnswerMin, valueAnswerMax), Random.Range(valueLinearMultiplicationMin, valueLinearMultiplicationMax), Random.Range(valueSquareMultiplicationMin, valueSquareMultiplicationMax), Random.Range(valueOffsetVariationMin, valueOffsetVariationMax), TextSize };
             newComet.SendMessage("SetAnswer", value);
         }
     }

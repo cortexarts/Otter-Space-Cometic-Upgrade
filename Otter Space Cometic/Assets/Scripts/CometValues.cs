@@ -9,6 +9,7 @@ public class CometValues : MonoBehaviour
     private int offset;
     private string stringToReturn;
     private string stringToAdd;
+    private int TextSize;
 
     public int answer;
     public int linearMultiplication;
@@ -43,6 +44,7 @@ public class CometValues : MonoBehaviour
         offset = -((answer * answer * squareMultiplication) + (answer * linearMultiplication));
         offsetLeft = offset - value[3];
         offsetRight = value[3];
+        TextSize = value[4];
 
         formula.text = "";
         formula.text += cleanupText(squareMultiplication, "x" + '\u00B2', "", "-");
@@ -53,5 +55,7 @@ public class CometValues : MonoBehaviour
 
         if (offsetRight != 0) formula.text += cleanupText(offsetRight, "", "", "-");
         else formula.text += "0";
+
+        formula.transform.localScale = new Vector3(TextSize / (1000 * transform.localScale.x), TextSize / (1000 * transform.localScale.y), 1 / transform.localScale.z);
     }
 }
