@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RocketBehaviour : MonoBehaviour
 {
+    public int answer;
+
     public float lifeTime = 0;
     public float maxLifeTime = 5.0f;
 
@@ -29,8 +31,13 @@ public class RocketBehaviour : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update ()
+    void SetAnswer(int value)
+    {
+        answer = value;
+    }
+
+        // Update is called once per frame
+        void Update ()
     {
         lifeTime += Time.deltaTime;
 

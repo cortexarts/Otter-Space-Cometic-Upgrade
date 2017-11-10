@@ -42,8 +42,8 @@ public class CometValues : MonoBehaviour
         linearMultiplication = value[1];
         squareMultiplication = value[2];
         offset = -((answer * answer * squareMultiplication) + (answer * linearMultiplication));
-        offsetLeft = offset - value[3];
-        offsetRight = value[3];
+        offsetLeft = offset -value[3];
+        offsetRight = -value[3];
         TextSize = value[4];
 
         formula.text = "";
