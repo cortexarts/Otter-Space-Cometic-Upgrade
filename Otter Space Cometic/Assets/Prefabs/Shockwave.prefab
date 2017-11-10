@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4030077775835860}
   - component: {fileID: 212133445805795494}
   - component: {fileID: 95815365523329734}
+  - component: {fileID: 114133248532076950}
   m_Layer: 0
   m_Name: Shockwave
   m_TagString: Untagged
@@ -58,6 +59,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114133248532076950
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1457597740145072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 615a114fa341973499293f142365963f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shockwave: {fileID: 7400000, guid: 4c8385fba18bbb64b9d9f9f6b114b63e, type: 2}
 --- !u!212 &212133445805795494
 SpriteRenderer:
   m_ObjectHideFlags: 1

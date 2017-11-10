@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Velocity: 150
   camShakeAmt: 0.05
   camShakeLength: 0.1
+  Shockwave: {fileID: 1457597740145072, guid: b2c670f9b908dec49af929af04d4b0cc, type: 2}
 --- !u!212 &212003204198036372
 SpriteRenderer:
   m_ObjectHideFlags: 1
