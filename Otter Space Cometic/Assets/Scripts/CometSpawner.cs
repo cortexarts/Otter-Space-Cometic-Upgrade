@@ -13,7 +13,6 @@ public class CometSpawner : MonoBehaviour
     public List<GameObject> comets;
     private List<Vector3> positions;
 
-
     public int TextSize;
     public int difficulty;
     public int valueAnswerMin = 1;
@@ -47,10 +46,25 @@ public class CometSpawner : MonoBehaviour
         return x && y;
     }
 
-    // Use this for initialization
-    void Start()
+    public int CometSpawnRequestCounter;
+
+    void RequestCometSpawn()
     {
-        int cometsCount = (int)Random.Range(amountExtrema.x, amountExtrema.y);
+        CometSpawnRequestCounter++;
+    }
+
+    private void Update()
+    {
+        while (CometSpawnRequestCounter > 0)
+        {
+            SpawnComets();
+            CometSpawnRequestCounter--;
+        }
+    }
+
+    void SpawnComets()
+    {
+        int cometsCount = 1;
         comets = new List<GameObject>();
         positions = new List<Vector3>();
 
@@ -79,8 +93,7 @@ public class CometSpawner : MonoBehaviour
             newComet.transform.localScale = new Vector3(Random.Range(scaleExtrema.x, scaleExtrema.y), Random.Range(scaleExtrema.x, scaleExtrema.y), 1);
             comets.Add(newComet);
 
-            switch (difficulty)
-            {
+            switch (difficulty) {
                 case 0: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 1, 0, 0); break;
                 case 1: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 1, 0, 10); break;
                 case 2: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 5, 0, 0); break;
@@ -95,12 +108,13 @@ public class CometSpawner : MonoBehaviour
 
             List<int> value = new List<int> { Random.Range(valueAnswerMin, valueAnswerMax), Random.Range(valueLinearMultiplicationMin, valueLinearMultiplicationMax), Random.Range(valueSquareMultiplicationMin, valueSquareMultiplicationMax), Random.Range(valueOffsetVariationMin, valueOffsetVariationMax), TextSize };
             newComet.SendMessage("SetAnswer", value);
+            newComet.SendMessage("CometSpawnerID", this.gameObject);
         }
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    void Start()
     {
-		
-	}
+        CometSpawnRequestCounter = (int)Random.Range(amountExtrema.x, amountExtrema.y);
+        SpawnComets();
+    }
 }
