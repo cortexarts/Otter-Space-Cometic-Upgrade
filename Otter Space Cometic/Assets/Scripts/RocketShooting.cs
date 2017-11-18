@@ -8,12 +8,13 @@ public class RocketShooting : MonoBehaviour
     public GameObject rocketPrefab;
     public Text TextValue;
     public int Value;
-
+    public int ValueMin;
+    public int ValueMax;
 
     // Use this for initialization
     void Start ()
     {
-        Value = Random.Range(1, 10);
+        Value = ValueMin;
         TextValue.text = Value.ToString();
     }
 
@@ -30,7 +31,7 @@ public class RocketShooting : MonoBehaviour
     {
        GameObject Rocket = Instantiate(rocketPrefab, this.transform.position, this.transform.rotation);
        Rocket.SendMessage("SetAnswer", Value);
-       Value = Random.Range(1, 10);
+        if (++Value > ValueMax) Value = ValueMin;
        TextValue.text = Value.ToString();
     }
 }
