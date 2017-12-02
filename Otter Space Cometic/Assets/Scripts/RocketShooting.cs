@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class RocketShooting : MonoBehaviour
 {
-    public GameObject rocketPrefab;
+    public GameObject missilePrefab;
     public Text TextValue;
     public int Value;
     public int ValueMin;
     public int ValueMax;
+    public int numCorrectAnswers;
 
     // Use this for initialization
     void Start ()
@@ -29,8 +30,8 @@ public class RocketShooting : MonoBehaviour
 
     void Shoot()
     {
-       GameObject Rocket = Instantiate(rocketPrefab, this.transform.position, this.transform.rotation);
-       Rocket.SendMessage("SetAnswer", Value);
+       GameObject Missile = Instantiate(missilePrefab, this.transform.position, this.transform.rotation);
+        Missile.SendMessage("SetAnswer", Value);
         if (++Value > ValueMax) Value = ValueMin;
        TextValue.text = Value.ToString();
     }

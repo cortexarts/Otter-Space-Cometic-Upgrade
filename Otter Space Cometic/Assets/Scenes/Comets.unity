@@ -302,7 +302,7 @@ Prefab:
         type: 2}
       propertyPath: cometPrefab
       value: 
-      objectReference: {fileID: 1988624065097476, guid: 4b195f7385204284dba62288688c6964,
+      objectReference: {fileID: 1934805013521798, guid: 468396f3f187a03448b1e38e7052ad7e,
         type: 2}
     - target: {fileID: 4621109410382306, guid: b6c3e5708d0fef14581377aa260af9df, type: 2}
       propertyPath: m_LocalScale.x
@@ -463,6 +463,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114054635829975260, guid: 0af217005a9bbb64194989f2dbe4b9c3,
+        type: 2}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 1115444120706154, guid: ea8e8e277a3c712448b17e8cfb97d76a,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0af217005a9bbb64194989f2dbe4b9c3, type: 2}
   m_IsPrefabParent: 0

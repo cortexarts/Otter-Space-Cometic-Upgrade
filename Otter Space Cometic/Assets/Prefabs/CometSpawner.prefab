@@ -54,6 +54,18 @@ MonoBehaviour:
   amountExtrema: {x: 5, y: 5}
   offsetExtrema: {x: -7, y: 7}
   scaleExtrema: {x: 2, y: 4}
-  cometPrefab: {fileID: 1845412088791000, guid: 779a704586733b942a9f76b176642d87,
+  offset: 1
+  cometPrefab: {fileID: 1934805013521798, guid: 468396f3f187a03448b1e38e7052ad7e,
     type: 2}
   comets: []
+  TextSize: 0
+  difficulty: 0
+  valueAnswerMin: 1
+  valueAnswerMax: 10
+  valueLinearMultiplicationMin: 1
+  valueLinearMultiplicationMax: 10
+  valueSquareMultiplicationMin: 1
+  valueSquareMultiplicationMax: 10
+  valueOffsetVariationMin: 1
+  valueOffsetVariationMax: 10
+  CometSpawnRequestCounter: 0
