@@ -71,7 +71,8 @@ public class CometSpawner : MonoBehaviour
         // Generate positions
         while (positions.Count < cometsCount * 2.0f)
         {
-            Vector3 newPosition = this.transform.position + new Vector3(Random.Range(offsetExtrema.x, offsetExtrema.y), Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
+            float angle = Random.Range(0, Mathf.PI * 2f);
+            Vector3 newPosition = this.transform.position + new Vector3(Mathf.Sin(angle) * Random.Range(offsetExtrema.x, offsetExtrema.y), Mathf.Cos(angle) * Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
             positions.Add(newPosition);
         }
 
