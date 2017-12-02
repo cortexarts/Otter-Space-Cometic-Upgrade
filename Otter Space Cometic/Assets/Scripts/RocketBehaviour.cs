@@ -20,6 +20,7 @@ public class RocketBehaviour : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
 
     public GameObject Shockwave;
+    public GameObject CometExplosion;
 
     // Use this for initialization
     void Start ()
@@ -65,7 +66,7 @@ public class RocketBehaviour : MonoBehaviour
                 DestroyObject(collider.gameObject);
                 camShake.Shake(camShakeAmt, camShakeLength);
             }
-            GameObject ShockwaveInstance = Instantiate(Shockwave, this.gameObject.transform.position, Quaternion.identity);
+            GameObject ShockwaveInstance = Instantiate(CometExplosion, this.gameObject.transform.position, Quaternion.identity);
             DestroyObject(this.gameObject);
         }
     }
