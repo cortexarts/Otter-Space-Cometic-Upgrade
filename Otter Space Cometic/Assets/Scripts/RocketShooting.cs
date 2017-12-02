@@ -11,6 +11,8 @@ public class RocketShooting : MonoBehaviour
     public int ValueMin;
     public int ValueMax;
     public int numCorrectAnswers;
+    public float cooldown = 1.0f;
+    public float lastShotTime;
 
     // Use this for initialization
     void Start ()
@@ -24,7 +26,11 @@ public class RocketShooting : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            Shoot();
+            if (Time.time - lastShotTime > cooldown)
+            {
+                Shoot();
+                lastShotTime = Time.time;
+            }
         }
     }
 
