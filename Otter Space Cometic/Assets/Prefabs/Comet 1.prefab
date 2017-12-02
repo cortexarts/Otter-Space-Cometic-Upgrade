@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63389b51b69e5584f8a89b637f321123, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistanceToRocket: 15
+  maxDistanceToRocket: 20
 --- !u!114 &114174650172858274
 MonoBehaviour:
   m_ObjectHideFlags: 1
