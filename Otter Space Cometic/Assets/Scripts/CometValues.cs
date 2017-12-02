@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class CometValues : MonoBehaviour
 {
-    private List<int> value = new List<int>();
     private int offset;
     private string stringToReturn;
     private string stringToAdd;

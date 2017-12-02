@@ -73,12 +73,13 @@ public class MissileBehaviour : MonoBehaviour
             if (rocketShooting.numCorrectAnswers == 3)
             {
                 rocketShooting.numCorrectAnswers = 0;
-                GameObject ShockwaveInstance = Instantiate(Shockwave, this.gameObject.transform.position, Quaternion.identity);
+                Instantiate(Shockwave, this.gameObject.transform.position, Quaternion.identity);
             }
             else
             {
-                GameObject ExplosionInstance = Instantiate(CometExplosion, this.gameObject.transform.position, Quaternion.identity);
+                Instantiate(CometExplosion, this.gameObject.transform.position, Quaternion.identity);
             }
+
             DestroyObject(this.gameObject);
         }
     }

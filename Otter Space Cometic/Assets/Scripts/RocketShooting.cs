@@ -36,9 +36,12 @@ public class RocketShooting : MonoBehaviour
 
     void Shoot()
     {
-       GameObject Missile = Instantiate(missilePrefab, this.transform.position, this.transform.rotation);
+        GameObject Missile = Instantiate(missilePrefab, this.transform.position, this.transform.rotation);
         Missile.SendMessage("SetAnswer", Value);
-        if (++Value > ValueMax) Value = ValueMin;
-       TextValue.text = Value.ToString();
+        if (++Value > ValueMax)
+        {
+            Value = ValueMin;
+        }
+        TextValue.text = Value.ToString();
     }
 }
