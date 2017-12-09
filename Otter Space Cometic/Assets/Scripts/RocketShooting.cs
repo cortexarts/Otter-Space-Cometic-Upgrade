@@ -7,6 +7,8 @@ public class RocketShooting : MonoBehaviour
 {
     public GameObject missilePrefab;
     public Text TextValue;
+    public KeyCode IncreaseKey;
+    public KeyCode DecreaseKey;
     public int Value;
     public int ValueMin;
     public int ValueMax;
@@ -31,6 +33,18 @@ public class RocketShooting : MonoBehaviour
                 Shoot();
                 lastShotTime = Time.time;
             }
+        }
+
+        if (Input.GetKeyUp(IncreaseKey))
+        {
+            Value++;
+            TextValue.text = Value.ToString();
+        }
+
+        if (Input.GetKeyUp(DecreaseKey))
+        {
+            Value--;
+            TextValue.text = Value.ToString();
         }
     }
 
