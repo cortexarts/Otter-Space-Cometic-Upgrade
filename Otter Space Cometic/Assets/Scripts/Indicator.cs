@@ -6,7 +6,7 @@ public class Indicator : MonoBehaviour
 {
     public Texture2D icon; //The icon. Preferably an arrow pointing upwards.
     public Vector4 RGBA;
-    public float iconSize = 25f;
+    public float iconSize = 15f;
     [HideInInspector]
     public GUIStyle gooey; //GUIStyle to make the box around the icon invisible. Public so that everything has the default stats.
     Vector2 indRange;
@@ -42,7 +42,8 @@ public class Indicator : MonoBehaviour
             indPos = new Vector2((Screen.width / 2) + indPos.x,
                               (Screen.height / 2) + indPos.y);
 
-            Vector3 pdir = transform.position - cam.ScreenToWorldPoint(new Vector3(indPos.x, indPos.y, transform.position.z));
+            Vector3 pdir = transform.position - cam.ScreenToWorldPoint(new Vector3(indPos.x, indPos.y,
+                                                                                    transform.position.z));
             pdir = Vector3.Normalize(pdir);
 
             float angle = Mathf.Atan2(pdir.x, pdir.y) * Mathf.Rad2Deg;
