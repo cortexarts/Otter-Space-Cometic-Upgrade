@@ -473,7 +473,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 71c4772c15ff72247be2adfda144f878, type: 3}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1324,4 +1324,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 753051717}
   source: {fileID: 4900000, guid: a651e80c6ffff8046ab9f6a7b1038073, type: 3}
-  letterPause: 0.05
+  image: {fileID: 1138830399}
+  onion: {fileID: 21300000, guid: dd5957f16986f4a4fa432ff61d9e0e1e, type: 3}
+  olga: {fileID: 21300000, guid: d871c99fd28c5384c9578549a33439c7, type: 3}
+  dimitri: {fileID: 21300000, guid: 2478d4b8fe9c539488b1dd84a982be45, type: 3}
+  letterPause: 0.04
+  DialoguePause: 1

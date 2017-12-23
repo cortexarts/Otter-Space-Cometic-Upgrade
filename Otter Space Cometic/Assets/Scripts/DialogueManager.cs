@@ -6,15 +6,26 @@ using System.Text;
 using System.Xml;
 using System.IO;
 
+public struct Dialogue
+{
+    public string character;
+    public string text;
+}
+
 public class DialogueManager : MonoBehaviour
 {
     public Text target;
     public TextAsset source;
+    public Image image;
+    public Sprite onion;
+    public Sprite olga;
+    public Sprite dimitri;
     public float letterPause = 0.05f;
+    public float DialoguePause = 0.1f;
     private string message;
+    private int index = 0;
 
-    List<Dictionary<string, string>> dialogues = new List<Dictionary<string, string>>();
-    Dictionary<string, string> obj;
+    public List<Dialogue> dialogues = new List<Dialogue>();
 
     void Start()
     {
@@ -24,35 +35,43 @@ public class DialogueManager : MonoBehaviour
 
     public void ParseDialogue()
     {
-        XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
-        xmlDoc.LoadXml(source.text); // load the file.
-        XmlNodeList dialogueList = xmlDoc.GetElementsByTagName("dialogue"); // array of the level nodes.
+        XmlDocument xmlDoc = new XmlDocument();
+        xmlDoc.LoadXml(source.text);
+        XmlNodeList dialogueList = xmlDoc.GetElementsByTagName("dialogue");
 
         foreach (XmlNode dialogueInfo in dialogueList)
         {
             XmlNodeList dialogueContent = dialogueInfo.ChildNodes;
-            obj = new Dictionary<string, string>(); // Create a object(Dictionary) to colect the both nodes inside the level node and then put into levels[] array.
 
-            foreach (XmlNode dialogueItems in dialogueContent) // levels itens nodes.
+            foreach (XmlNode dialogueItems in dialogueContent)
             {
                 if (dialogueItems.Name == "object")
                 {
-                    switch (dialogueItems.Attributes["name"].Value)
-                    {
-                        case "Wife": obj.Add("Wife", dialogueItems.InnerText); break; // put this in the dictionary.
-                        case "Dimitri": obj.Add("Dimitri", dialogueItems.InnerText); break; // put this in the dictionary.
-                        case "Onion": obj.Add("Onion", dialogueItems.InnerText); break; // put this in the dictionary.
-                    }
+                    Dialogue tempDialogue;
+                    tempDialogue.character = dialogueItems.Attributes["name"].Value;
+                    tempDialogue.text = dialogueItems.InnerText;
+                    dialogues.Add(tempDialogue);
                 }
             }
-            dialogues.Add(obj); // add whole obj dictionary in the levels[].
         }
     }
 
     public void CreateDialogue()
     {
-        dialogues[0].TryGetValue("Onion", out message);
-        Debug.Log("test " + message);
+        message = dialogues[index].text;
+
+        if (dialogues[index].character == "Onion")
+        {
+            image.sprite = onion;
+        }
+        else if (dialogues[index].character == "Olga")
+        {
+            image.sprite = olga;
+        }
+        else if (dialogues[index].character == "Dimitri")
+        {
+            image.sprite = dimitri;
+        }
     }
 
     public void PlayDialogue()
@@ -69,6 +88,20 @@ public class DialogueManager : MonoBehaviour
             target.text += letter;
             yield return 0;
             yield return new WaitForSeconds(letterPause);
+        }
+
+        if (index < dialogues.Count - 1)
+        {
+            yield return 0;
+            yield return new WaitForSeconds(DialoguePause);
+            index++;
+            PlayDialogue();
+        }
+        else
+        {
+            yield return 0;
+            yield return new WaitForSeconds(DialoguePause);
+            gameObject.SetActive(false);
         }
     }
 }
