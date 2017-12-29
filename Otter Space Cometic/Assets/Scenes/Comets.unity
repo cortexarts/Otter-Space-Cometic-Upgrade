@@ -1326,7 +1326,8 @@ MonoBehaviour:
   source: {fileID: 4900000, guid: a651e80c6ffff8046ab9f6a7b1038073, type: 3}
   image: {fileID: 1138830399}
   onion: {fileID: 21300000, guid: dd5957f16986f4a4fa432ff61d9e0e1e, type: 3}
-  olga: {fileID: 21300000, guid: d871c99fd28c5384c9578549a33439c7, type: 3}
-  dimitri: {fileID: 21300000, guid: 2478d4b8fe9c539488b1dd84a982be45, type: 3}
+  olga: {fileID: 21300000, guid: b3613f94037ab7e4890ad82c541eea47, type: 3}
+  dimitri: {fileID: 21300000, guid: 2c04d313b28df4340b623f0a416acbd9, type: 3}
+  alien: {fileID: 21300000, guid: 790679a42d814554b8a1624010b74724, type: 3}
   letterPause: 0.04
   DialoguePause: 1

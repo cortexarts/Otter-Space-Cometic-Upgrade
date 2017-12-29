@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     public Sprite onion;
     public Sprite olga;
     public Sprite dimitri;
+    public Sprite alien;
     public float letterPause = 0.05f;
     public float DialoguePause = 0.1f;
     private string message;
@@ -45,7 +46,7 @@ public class DialogueManager : MonoBehaviour
 
             foreach (XmlNode dialogueItems in dialogueContent)
             {
-                if (dialogueItems.Name == "object")
+                if (dialogueItems.Name == "phrase")
                 {
                     Dialogue tempDialogue;
                     tempDialogue.character = dialogueItems.Attributes["name"].Value;
@@ -71,6 +72,10 @@ public class DialogueManager : MonoBehaviour
         else if (dialogues[index].character == "Dimitri")
         {
             image.sprite = dimitri;
+        }
+        else if (dialogues[index].character == "Alien")
+        {
+            image.sprite = alien;
         }
     }
 
