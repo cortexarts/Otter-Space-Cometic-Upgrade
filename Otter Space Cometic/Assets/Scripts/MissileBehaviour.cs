@@ -21,6 +21,7 @@ public class MissileBehaviour : MonoBehaviour
 
     public GameObject Shockwave;
     public GameObject CometExplosion;
+    public GameObject IronOre;
 
     // Use this for initialization
     void Start()
@@ -68,6 +69,7 @@ public class MissileBehaviour : MonoBehaviour
                 rocketShooting.numCorrectAnswers++;
                 DestroyObject(collider.gameObject);
                 camShake.Shake(camShakeAmt, camShakeLength);
+                Instantiate(IronOre, this.gameObject.transform.position, Quaternion.identity);
             }
 
             if (rocketShooting.numCorrectAnswers == 3)
