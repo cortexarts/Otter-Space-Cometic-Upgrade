@@ -29,9 +29,9 @@ public class DialogueManager : MonoBehaviour
     public Sprite alien;
     public float letterPause = 0.05f;
     public float DialoguePause = 0.1f;
-    private string message;
-    private int dialogueIndex = 0;
+    public int dialogueIndex = 0;
     private int phraseIndex = 0;
+    private string message = "";
 
     public List<Dialogue> dialogues = new List<Dialogue>();
 
