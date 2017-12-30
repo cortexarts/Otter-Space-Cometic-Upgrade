@@ -801,7 +801,7 @@ GameObject:
   - component: {fileID: 1228562674}
   - component: {fileID: 1228562673}
   m_Layer: 5
-  m_Name: Canvas_dialogue
+  m_Name: Canvas_overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1040,9 +1040,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95e99e8252900b419b61c3b5e64fb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Radar: {fileID: 1786283428}
-  Rocket: {fileID: 227648874}
-  Dialogue: {fileID: 1228562675}
+  CameraCanvas: {fileID: 1786283428}
+  RocketCanvas: {fileID: 227648874}
+  OverlayCanvas: {fileID: 1228562675}
 --- !u!1 &1470993907
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 1786283427}
   - component: {fileID: 1786283426}
   m_Layer: 5
-  m_Name: Canvas_radar
+  m_Name: Canvas_camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
