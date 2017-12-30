@@ -47,7 +47,8 @@ public class MissileBehaviour : MonoBehaviour
 
         if (lifeTime > maxLifeTime)
         {
-            DestroyImmediate(this.gameObject);
+            Instantiate(CometExplosion, this.gameObject.transform.position, Quaternion.identity);
+            DestroyObject(this.gameObject);
         }
     }
 
