@@ -6,10 +6,16 @@ using System.Text;
 using System.Xml;
 using System.IO;
 
-public struct Dialogue
+public struct Phrase
 {
     public string character;
     public string text;
+}
+
+public struct Dialogue
+{
+    public int index;
+    public List<Phrase> phrases;
 }
 
 public class DialogueManager : MonoBehaviour
@@ -24,7 +30,8 @@ public class DialogueManager : MonoBehaviour
     public float letterPause = 0.05f;
     public float DialoguePause = 0.1f;
     private string message;
-    private int index = 0;
+    private int dialogueIndex = 0;
+    private int phraseIndex = 0;
 
     public List<Dialogue> dialogues = new List<Dialogue>();
 
@@ -43,37 +50,44 @@ public class DialogueManager : MonoBehaviour
         foreach (XmlNode dialogueInfo in dialogueList)
         {
             XmlNodeList dialogueContent = dialogueInfo.ChildNodes;
+            Dialogue currentXMLDialogue;
+            currentXMLDialogue.phrases = new List<Phrase>();
+            int.TryParse(dialogueInfo.Attributes["index"].Value, out currentXMLDialogue.index);
 
             foreach (XmlNode dialogueItems in dialogueContent)
             {
                 if (dialogueItems.Name == "phrase")
                 {
-                    Dialogue tempDialogue;
-                    tempDialogue.character = dialogueItems.Attributes["name"].Value;
-                    tempDialogue.text = dialogueItems.InnerText;
-                    dialogues.Add(tempDialogue);
+                    Phrase currentXMLPhrase;
+                    currentXMLPhrase.character = dialogueItems.Attributes["name"].Value;
+                    currentXMLPhrase.text = dialogueItems.InnerText;
+                    currentXMLDialogue.phrases.Add(currentXMLPhrase);
                 }
             }
+
+            dialogues.Add(currentXMLDialogue);
         }
     }
 
     public void CreateDialogue()
     {
-        message = dialogues[index].text;
+        Phrase currentPhrase;
+        currentPhrase = dialogues[dialogueIndex].phrases[phraseIndex];
+        message = currentPhrase.text;
 
-        if (dialogues[index].character == "Onion")
+        if (currentPhrase.character == "Onion")
         {
             image.sprite = onion;
         }
-        else if (dialogues[index].character == "Olga")
+        else if (currentPhrase.character == "Olga")
         {
             image.sprite = olga;
         }
-        else if (dialogues[index].character == "Dimitri")
+        else if (currentPhrase.character == "Dimitri")
         {
             image.sprite = dimitri;
         }
-        else if (dialogues[index].character == "Alien")
+        else if (currentPhrase.character == "Alien")
         {
             image.sprite = alien;
         }
@@ -95,11 +109,11 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(letterPause);
         }
 
-        if (index < dialogues.Count - 1)
+        if (phraseIndex < dialogues[0].phrases.Count - 1)
         {
             yield return 0;
             yield return new WaitForSeconds(DialoguePause);
-            index++;
+            phraseIndex++;
             PlayDialogue();
         }
         else

@@ -1,13 +1,11 @@
 <dialogues>
-  <dialogue>
-    <index>1</index>
+  <dialogue index="1">
     <phrase name="Olga">There is someone at the door for you, dear...</phrase>
     <phrase name="Dimitri">Ugh I don’t have time right now, tell them i am not home.</phrase>
 	<phrase name="Olga">It's one of the Onions dear, I don't think I can.</phrase>
     <phrase name="Onion">Dimitri! We must speak with you, it is very urgent.</phrase>
   </dialogue>
-  <dialogue>
-    <index>2</index>
+  <dialogue index="2">
     <phrase name="Onion">Dimitri we have a problem!</phrase>
     <phrase name="Dimitri">What is it?</phrase>
 	<phrase name="Onion">We are running out of time!</phrase>
