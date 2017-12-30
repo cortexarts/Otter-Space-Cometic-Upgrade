@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IronOreBehavior : MonoBehaviour
+public class IronOreBehaviour : MonoBehaviour
 {
 
 	// Use this for initialization
