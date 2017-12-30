@@ -79,8 +79,8 @@ GameObject:
   - component: {fileID: 114717769533664462}
   - component: {fileID: 114694644325752764}
   m_Layer: 0
-  m_Name: Comet
-  m_TagString: Comet
+  m_Name: Asteroid
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

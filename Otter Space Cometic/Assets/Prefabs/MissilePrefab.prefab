@@ -106,7 +106,7 @@ MonoBehaviour:
   camShakeAmt: 0.05
   camShakeLength: 0.1
   Shockwave: {fileID: 1457597740145072, guid: b2c670f9b908dec49af929af04d4b0cc, type: 2}
-  CometExplosion: {fileID: 1963863012924650, guid: 6f2b3786dbb004643bf5eb05fa694099,
+  AsteroidExplosion: {fileID: 1963863012924650, guid: 6f2b3786dbb004643bf5eb05fa694099,
     type: 2}
   IronOre: {fileID: 1322030647389118, guid: 8f3a7f891f451364392067cff191e791, type: 2}
 --- !u!212 &212829738049762142

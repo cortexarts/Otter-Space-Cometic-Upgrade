@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class CometValues : MonoBehaviour
+public class AsteroidValues : MonoBehaviour
 {
     private int offset;
     private string stringToReturn;

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4373512378490934}
   - component: {fileID: 114951043708398140}
   m_Layer: 0
-  m_Name: CometSpawner
+  m_Name: AsteroidsSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,6 +58,7 @@ MonoBehaviour:
   cometPrefab: {fileID: 1934805013521798, guid: 468396f3f187a03448b1e38e7052ad7e,
     type: 2}
   comets: []
+  positions: []
   TextSize: 10
   difficulty: 0
   valueAnswerMin: 0

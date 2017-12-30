@@ -20,7 +20,7 @@ public class MissileBehaviour : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
 
     public GameObject Shockwave;
-    public GameObject CometExplosion;
+    public GameObject AsteroidExplosion;
     public GameObject IronOre;
 
     // Use this for initialization
@@ -47,7 +47,7 @@ public class MissileBehaviour : MonoBehaviour
 
         if (lifeTime > maxLifeTime)
         {
-            Instantiate(CometExplosion, this.gameObject.transform.position, Quaternion.identity);
+            Instantiate(AsteroidExplosion, this.gameObject.transform.position, Quaternion.identity);
             DestroyObject(this.gameObject);
         }
     }
@@ -60,12 +60,12 @@ public class MissileBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Comet")
+        if (collider.tag == "Asteroid")
         {
             GameObject Rocket = GameObject.Find("Rocket");
             RocketShooting rocketShooting = Rocket.GetComponent<RocketShooting>();
 
-            if (collider.GetComponent<CometValues>().answer == answer)
+            if (collider.GetComponent<AsteroidValues>().answer == answer)
             {
                 rocketShooting.numCorrectAnswers++;
                 DestroyObject(collider.gameObject);
@@ -80,7 +80,7 @@ public class MissileBehaviour : MonoBehaviour
             }
             else
             {
-                Instantiate(CometExplosion, this.gameObject.transform.position, Quaternion.identity);
+                Instantiate(AsteroidExplosion, this.gameObject.transform.position, Quaternion.identity);
             }
 
             DestroyObject(this.gameObject);

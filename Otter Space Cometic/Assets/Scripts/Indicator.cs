@@ -27,7 +27,7 @@ public class Indicator : MonoBehaviour
         indRange /= 2f;
 
         gooey.normal.textColor = new Vector4(0, 0, 0, 0); //Makes the box around the icon invisible.
-        m_ObjectName = "Comet";
+        m_ObjectName = "Asteroid";
     }
 
     void OnGUI()

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CometSpawner : MonoBehaviour
+public class AsteroidSpawner : MonoBehaviour
 {
     public Vector2 amountExtrema;
     public Vector2 offsetExtrema;
     public Vector2 scaleExtrema;
     [SerializeField]
     public float offset = 1.0f;
-    public GameObject cometPrefab;
-    public List<GameObject> comets;
+    public GameObject asteroidPrefab;
+    public List<GameObject> asteroids;
     private List<Vector3> positions;
 
     public int TextSize;
@@ -46,30 +46,30 @@ public class CometSpawner : MonoBehaviour
         return x && y;
     }
 
-    public int CometSpawnRequestCounter;
+    public int asteroidSpawnRequestCounter;
 
-    void RequestCometSpawn()
+    void RequestAsteroidSpawn()
     {
-        CometSpawnRequestCounter++;
+        asteroidSpawnRequestCounter++;
     }
 
     private void Update()
     {
-        while (CometSpawnRequestCounter > 0)
+        while (asteroidSpawnRequestCounter > 0)
         {
-            SpawnComets();
-            CometSpawnRequestCounter--;
+            SpawnAsteroids();
+            asteroidSpawnRequestCounter--;
         }
     }
 
-    void SpawnComets()
+    void SpawnAsteroids()
     {
-        int cometsCount = 1;
-        comets = new List<GameObject>();
+        int asteroidsCount = 1;
+        asteroids = new List<GameObject>();
         positions = new List<Vector3>();
 
         // Generate positions
-        while (positions.Count < cometsCount * 2.0f)
+        while (positions.Count < asteroidsCount * 2.0f)
         {
             float angle = Random.Range(0, Mathf.PI * 2f);
             Vector3 newPosition = this.transform.position + new Vector3(Mathf.Sin(angle) * Random.Range(offsetExtrema.x, offsetExtrema.y), Mathf.Cos(angle) * Random.Range(offsetExtrema.x, offsetExtrema.y), 0);
@@ -88,11 +88,11 @@ public class CometSpawner : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < positions.Count && i < cometsCount; i++)
+        for (int i = 0; i < positions.Count && i < asteroidsCount; i++)
         {
-            GameObject newComet = Instantiate(cometPrefab, positions[i], Quaternion.identity) as GameObject;
-            newComet.transform.localScale = new Vector3(Random.Range(scaleExtrema.x, scaleExtrema.y), Random.Range(scaleExtrema.x, scaleExtrema.y), 1);
-            comets.Add(newComet);
+            GameObject newAsteroid = Instantiate(asteroidPrefab, positions[i], Quaternion.identity) as GameObject;
+            newAsteroid.transform.localScale = new Vector3(Random.Range(scaleExtrema.x, scaleExtrema.y), Random.Range(scaleExtrema.x, scaleExtrema.y), 1);
+            asteroids.Add(newAsteroid);
 
             switch (difficulty) {
                 case 0: SetRanges(valueAnswerMin, valueAnswerMax, 0, 0, 1, 1, 0, 0); break;
@@ -108,14 +108,14 @@ public class CometSpawner : MonoBehaviour
             }
 
             List<int> value = new List<int> { Random.Range(valueAnswerMin, valueAnswerMax), Random.Range(valueLinearMultiplicationMin, valueLinearMultiplicationMax), Random.Range(valueSquareMultiplicationMin, valueSquareMultiplicationMax), Random.Range(valueOffsetVariationMin, valueOffsetVariationMax), TextSize };
-            newComet.SendMessage("SetAnswer", value);
-            newComet.SendMessage("CometSpawnerID", this.gameObject);
+            newAsteroid.SendMessage("SetAnswer", value);
+            newAsteroid.SendMessage("AsteroidSpawnerID", this.gameObject);
         }
     }
 
     void Start()
     {
-        CometSpawnRequestCounter = (int)Random.Range(amountExtrema.x, amountExtrema.y);
-        SpawnComets();
+        asteroidSpawnRequestCounter = (int)Random.Range(amountExtrema.x, amountExtrema.y);
+        SpawnAsteroids();
     }
 }

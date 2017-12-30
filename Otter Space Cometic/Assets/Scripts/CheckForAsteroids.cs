@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckForComets : MonoBehaviour
+public class CheckForAsteroids : MonoBehaviour
 {
     public GameObject indicator;
 
@@ -19,7 +19,7 @@ public class CheckForComets : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Comet")
+        if (collision.tag == "Asteroid")
         {
             collision.GetComponent<Indicator>().enabled = true;
             collision.GetComponent<Indicator>().RGBA.w = 1.0f;
@@ -28,7 +28,7 @@ public class CheckForComets : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Comet")
+        if (collision.tag == "Asteroid")
         {
             collision.GetComponent<Indicator>().enabled = false;
             collision.GetComponent<Indicator>().RGBA.w = 1.0f;
