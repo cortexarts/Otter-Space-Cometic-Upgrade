@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 1786283427}
   - component: {fileID: 1786283426}
   m_Layer: 5
-  m_Name: Radar_canvas
+  m_Name: Canvas_radar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1297,6 +1297,10 @@ Prefab:
     - target: {fileID: 1321647277106314, guid: 0af217005a9bbb64194989f2dbe4b9c3, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1321647277106314, guid: 0af217005a9bbb64194989f2dbe4b9c3, type: 2}
+      propertyPath: m_Name
+      value: Canvas_rocket
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114839736566754000, guid: 0af217005a9bbb64194989f2dbe4b9c3, type: 2}
