@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
-    public Canvas CameraCanvas;
-    public Canvas RocketCanvas;
-    public Canvas OverlayCanvas;
+    public Canvas cameraCanvas;
+    public Canvas rocketCanvas;
+    public Canvas overlayCanvas;
+    public GameObject instructionsPanel;
+    public GameObject dialoguePanel;
 
 	// Use this for initialization
 	void Start ()
     {
-        CameraCanvas.gameObject.SetActive(false);
-        RocketCanvas.gameObject.SetActive(false);
-        OverlayCanvas.gameObject.SetActive(false);
+        cameraCanvas.gameObject.SetActive(false);
+        rocketCanvas.gameObject.SetActive(false);
+        overlayCanvas.gameObject.SetActive(true);
+        dialoguePanel.gameObject.SetActive(false);
+        instructionsPanel.SetActive(true);
+        StartCoroutine(ShowInstructions());
     }
 
     // Update is called once per frame
@@ -21,15 +26,50 @@ public class StateManager : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Keypad1))
         {
-            CameraCanvas.gameObject.SetActive(true);
+            if (cameraCanvas.gameObject.activeInHierarchy)
+            {
+                cameraCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                cameraCanvas.gameObject.SetActive(true);
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Keypad2))
+
+        if (Input.GetKeyUp(KeyCode.Keypad2))
         {
-            RocketCanvas.gameObject.SetActive(true);
+            if (rocketCanvas.gameObject.activeInHierarchy)
+            {
+                rocketCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                rocketCanvas.gameObject.SetActive(true);
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Keypad3))
+
+        if (Input.GetKeyUp(KeyCode.Keypad3))
         {
-            OverlayCanvas.gameObject.SetActive(true);
+            if (overlayCanvas.gameObject.activeInHierarchy)
+            {
+                overlayCanvas.gameObject.SetActive(false);
+            }
+            else
+            {
+                overlayCanvas.gameObject.SetActive(true);
+            }
         }
+    }
+
+    IEnumerator ShowInstructions()
+    {
+        yield return 0;
+        yield return new WaitForSeconds(10.0f);
+        instructionsPanel.SetActive(false);
+        dialoguePanel.gameObject.SetActive(true);
+        yield return new WaitForSeconds(10.0f);
+        overlayCanvas.gameObject.SetActive(false);
+        cameraCanvas.gameObject.SetActive(true);
+        rocketCanvas.gameObject.SetActive(true);
     }
 }
