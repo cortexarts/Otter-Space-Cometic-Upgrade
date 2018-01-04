@@ -55,10 +55,9 @@ MonoBehaviour:
   offsetExtrema: {x: 10, y: 20}
   scaleExtrema: {x: 2, y: 4}
   offset: 1.5
-  cometPrefab: {fileID: 1934805013521798, guid: 468396f3f187a03448b1e38e7052ad7e,
+  asteroidPrefab: {fileID: 1934805013521798, guid: 468396f3f187a03448b1e38e7052ad7e,
     type: 2}
-  comets: []
-  positions: []
+  asteroids: []
   TextSize: 10
   difficulty: 0
   valueAnswerMin: 0
@@ -69,4 +68,4 @@ MonoBehaviour:
   valueSquareMultiplicationMax: 2
   valueOffsetVariationMin: 0
   valueOffsetVariationMax: 30
-  CometSpawnRequestCounter: 0
+  asteroidSpawnRequestCounter: 0
