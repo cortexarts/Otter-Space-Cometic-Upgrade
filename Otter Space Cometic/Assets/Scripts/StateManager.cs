@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class StateManager : MonoBehaviour
 {
+    public enum State { Menu, Instructions, Playing, Paused };
+
+    public State currentState;
     public Canvas cameraCanvas;
     public Canvas rocketCanvas;
     public Canvas overlayCanvas;
@@ -21,7 +24,6 @@ public class StateManager : MonoBehaviour
         overlayCanvas.gameObject.SetActive(true);
         dialoguePanel.gameObject.SetActive(false);
         instructionsPanel.SetActive(true);
-        StartCoroutine(ShowInstructions());
         audiomanager.PlaySound("BackgroundMusic");
     }
 
@@ -65,14 +67,25 @@ public class StateManager : MonoBehaviour
         }
     }
 
-    IEnumerator ShowInstructions()
+    /// <summary>
+    /// Change the current game state.
+    /// </summary>
+    public void ChangeState(State state)
     {
-        yield return 0;
-        yield return new WaitForSeconds(8.0f);
-        instructionsPanel.SetActive(false);
-        dialoguePanel.gameObject.SetActive(true);
-        overlayCanvas.gameObject.SetActive(false);
-        cameraCanvas.gameObject.SetActive(true);
-        rocketCanvas.gameObject.SetActive(true);
+        Debug.Log("Changing state");
+
+        currentState = state;
+    }
+
+    public void ToggleObject(GameObject gameobject)
+    {
+        if (gameobject.activeInHierarchy)
+        {
+            gameobject.SetActive(false);
+        }
+        else
+        {
+            gameobject.SetActive(true);
+        }
     }
 }

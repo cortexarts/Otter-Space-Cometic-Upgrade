@@ -4,19 +4,32 @@ using UnityEngine;
 
 public class UVScrolling : MonoBehaviour
 {
-    public float parallax = 2.0f;
+    public int materialIndex = 0;
+    public float U_AnimationRate = 1.0f;
+    public float V_AnimationRate = 0.0f;
+    public string textureName = "_MainTex";
 
-    void Update()
+    private Rigidbody2D playerPhysics;
+    private Vector2 uvOffset;
+
+    private MeshRenderer mr;
+
+    private void Start()
     {
-        MeshRenderer mr = GetComponent<MeshRenderer>();
+        mr = GetComponent<MeshRenderer>();
+        playerPhysics = GameObject.FindWithTag("Player").GetComponent<Rigidbody2D>();
+    }
 
-        Material mat = mr.material;
+    void LateUpdate()
+    {
+        float U_Offset = playerPhysics.velocity.x * U_AnimationRate;
+        float V_Offset = playerPhysics.velocity.y * V_AnimationRate;
+        Debug.Log(U_Offset + " V: " + V_Offset);
+        uvOffset += new Vector2(U_Offset, V_Offset);
 
-        Vector2 offset = mat.mainTextureOffset;
-
-        offset.x = transform.position.x / transform.localScale.x;
-        offset.y = transform.position.y / transform.localScale.y;
-
-        mat.mainTextureOffset = offset;
+        if (mr.enabled)
+        {
+            mr.materials[materialIndex].SetTextureOffset(textureName, uvOffset);
+        }
     }
 }
