@@ -64,10 +64,9 @@ public class StateManager : MonoBehaviour
     IEnumerator ShowInstructions()
     {
         yield return 0;
-        yield return new WaitForSeconds(10.0f);
+        yield return new WaitForSeconds(8.0f);
         instructionsPanel.SetActive(false);
         dialoguePanel.gameObject.SetActive(true);
-        yield return new WaitForSeconds(10.0f);
         overlayCanvas.gameObject.SetActive(false);
         cameraCanvas.gameObject.SetActive(true);
         rocketCanvas.gameObject.SetActive(true);
