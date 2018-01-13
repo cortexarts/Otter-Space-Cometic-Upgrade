@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d95e99e8252900b419b61c3b5e64fb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
+  currentState: 1
   cameraCanvas: {fileID: 1786283428}
   rocketCanvas: {fileID: 227648874}
   overlayCanvas: {fileID: 1228562675}
