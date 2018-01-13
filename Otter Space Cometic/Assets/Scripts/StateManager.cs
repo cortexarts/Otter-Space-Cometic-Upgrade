@@ -10,15 +10,19 @@ public class StateManager : MonoBehaviour
     public GameObject instructionsPanel;
     public GameObject dialoguePanel;
 
+    private AudioManager audiomanager;
+
 	// Use this for initialization
 	void Start ()
     {
+        audiomanager = FindObjectOfType<AudioManager>();
         cameraCanvas.gameObject.SetActive(false);
         rocketCanvas.gameObject.SetActive(false);
         overlayCanvas.gameObject.SetActive(true);
         dialoguePanel.gameObject.SetActive(false);
         instructionsPanel.SetActive(true);
         StartCoroutine(ShowInstructions());
+        audiomanager.PlaySound("BackgroundMusic");
     }
 
     // Update is called once per frame
