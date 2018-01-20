@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidDespawn : MonoBehaviour {
-
+public class AsteroidDespawn : MonoBehaviour
+{
     private GameObject AsteroidSpawner;
+    private GameObject player;
 
     public int maxDistanceToRocket;
+
+    private void Start()
+    {
+        player = FindObjectOfType<RocketShooting>().gameObject;
+    }
 
     void AsteroidSpawnerID(GameObject ID)
     {
@@ -25,7 +31,7 @@ public class AsteroidDespawn : MonoBehaviour {
     {
         if (AsteroidSpawner != null)
         {
-            float distanceToRocket = Vector3.Distance(AsteroidSpawner.transform.position, this.gameObject.transform.position);
+            float distanceToRocket = Vector3.Distance(player.transform.position, this.gameObject.transform.position);
             
             if (distanceToRocket > maxDistanceToRocket) DestroyObject(this.gameObject);
         }
